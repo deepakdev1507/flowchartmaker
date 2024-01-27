@@ -1,0 +1,77 @@
+### Organization Chart (Hierarchical Representation)
+
+**Ravi Shankar** - CEO
+- **Shravan Chintapatla** - COO - Chief Operating Officer
+  - **Raghu Ram Phanindra** - Director - Global Services
+    - **Naveen Kumar Palla** - Product Manager
+      - **Remya Varghese** - Project Manager
+        - **Prashanth K L A** - Project Associate
+    - **Uttej Vattumilli** - SAP Consultant
+    - **Udayakumar V** - SAP Consultant
+  - **Venkata Raja Ramesh** - Director - SAP Products
+    - **Rupesh Kandru** - Software Developer
+    - **K Jyothi** - Jr. Software Developer - Trainee
+  - **Srinivas Narayanaraopet** - OCR - Team Lead
+  - **Mahesh Battula** - Team Lead
+    - **Sai Pranav** - Software Developer
+  - **Srinivasa Raju Jampana** - Sr. Software Developer
+  - **Naga Divya Ravi** - Software Developer
+  - **Venkatesh Gorli** - Software Developer
+- **Ananda Bala Vigneshwar** - Chief Human Resources Officer
+  - **Shruti Dubey** - HR - Business Partner
+  - **Arpita Dey** - HR Executive
+  - **MB Maya Bot** - Jr. HR Executive
+  - **saarangapani Bhethanab** - Advisor - Strategic Projects
+  - **Pratibha Choudhary** - HR Admin & Executive
+- **TW Tom Walker** - Chief Marketing Officer
+- **Ravindra Baloda** - CTO - Chief Technical Officer
+  - **Harshvardhan Pathak** - Sr. Software Developer
+  - **Rakesh Sharma** - Software Developer
+  - **Ibrar Hoda** - Jr. Software Developer
+  - **Rashmi Soni** - Software Developer
+  - **Shivansh Kher** - Jr. Software Developer
+  - **Sunil Kumar Khicher** - Software Developer
+  - **MD Tarique Aziz** - Software Developer
+  - **Aakash Sharma** - Jr. Software Developer
+  - **Adesh Malunjkar** - Jr. Software Developer
+  - **Bharti Pandey** - Jr. Software Developer
+  - **Ramneet Kaur Bhutani** - Software Developer
+  - **Khushboo Parashar** - Jr. Software Developer - Trainee
+  - **Ashish Chaudhary** - Jr. Software Developer - Trainee
+  - **Deepak Dev** - Software Developer
+- **Arun Bashaboina** - Director of IT
+  - **Kokkonda Nagaraj** - DevOps Lead
+  - **Subrahmanyam G** - DevOps Engineer
+  - **Salini C** - DevOps Engineer
+  - **Sai Prasad G.H.V.K.M** - DevOps Engineer
+  - **Harika Bojja** - SAP - Basis Trainee
+  - **Harish Thirumala** - DevOps Admin
+  - **M Venkata Siva Rama Kr** - Information Security Officer
+- **Naga Chaitanya Kotari** - Country Director Enterprise
+  - **Alankrit Singh** - Inside Sales Executive
+  - **Shreesh Srivastava** - Solution Consultant
+  - **Bhanu Theja** - Regional Sales Manager
+  - **Yuvraj Naik** - Regional Sales Manager
+- **TH Tod Hippensteel** - Business Development Manager
+- **ANISHA VERMA** - Sr. Support Analyst
+  - **Ravi Kiran** - Sr. Support Analyst
+  - **Kalyan Reddy Nandigam** - OCR Consultant
+  - **Harika Macha** - Support Analyst
+- **Sunil Edupuganti** - Product Manager
+  - **T Sai Varma** - Product Manager
+  - **Jeevan Prasad Kota** - Assistant Product Manager
+  - **Jagadeesh Gadi** - Assistant Product Manager
+  - **Shaik Chand Basha** - UI - UX Designer
+- **Dakshay Kantilal Khatri** - Project Manager
+- **Chintamani Omkar Pathak** - Business Analyst
+- **Munawar Ali K** - Process Consultant
+- **Pranesh Ganesh** - Management - Trainee
+- **Krishna Busanamoni** - Office Assistant
+- **Badal Umarwal** - Office Assistant
+- **PT Payroll Team** - Payroll Admin
+- **Pradeep Reddy Manglaram** - Accounts Executive
+- **Keerthana Peddapyata** - Testing Engineer
+- **Baddam Suresh** - Testing Engineer
+- **Pooja Sharma** - Testing Engineer
+- **Thota Durga Subrahmanyam** - Software Developer
+

@@ -10,18 +10,46 @@ import json
 from streamlit.components.v1 import html
 
 
+def main():
+    if "page" not in st.session_state:
+        st.session_state.page = "form"
 
+    if st.session_state.page == "form":
+        expense_form()
+    elif st.session_state.page == "result":
+        display_results()
 
-def process_data(form_data, file=None, additional_text=None,structure=None):
+def display_results():
+    st.title("Result")
+    
+    with open("OrgChart.pdf", "rb") as file:
+        st.download_button(label="Download Organization Chart", data=file, file_name="OrgChart.pdf", mime="application/octet-stream")
+    with open("Reimbursement  Policy - updated.pdf", "rb") as file:
+        st.download_button(label="Download Reimbursement Policy", data=file, file_name="Reimbursement  Policy - updated.pdf", mime="application/octet-stream")
+    reset = st.button("reset")
+    if reset:
+        st.session_state.page = "form"
+        st.session_state.form_data = None
+        st.session_state.api_key = None
+        main()
+    if "api_key" in st.session_state and "form_data" in st.session_state:
+        code, explanation = process_data(st.session_state.form_data)
+        st.subheader("Code")
+        st.markdown(code)
+        st.subheader("Explanation")
+        st.write(explanation)
+        display_mermaid_diagram(code)
+        # Resetting the state for new input
+        # reset_state()
+    
+
+def process_data(form_data):
     temp_text= ''
-    # print("Form Data:", type(form_data))
-    # if structure is not None:
-        # print(structure)
-    if file is not None:
-        temp_text = extractText(file)
-    if additional_text:
-        # print("Additional Text:", additional_text)
-        temp_text += '\n' + additional_text
+    
+    
+    structure=extract_text_from_file("Organization Chart.txt")
+    temp_text=extract_text_from_file("reimursepolicy.txt")
+    # print(temp_text,structure,form_data)
     message=[
         {"role": "system", "content": "you are a expert text to diagram bot , you are excellent and capable of writing mermaid js script to generate diagram from text, "},
         {"role": "system", "content": "below given is the expense policy of a company and you have to use it as a source of your knowledge"+temp_text},
@@ -63,6 +91,7 @@ def expense_form():
         api_key = st.text_input("API Key", "")
 
         submitted = st.form_submit_button("Submit")
+        
         if submitted:
             form_data = {
                 "requestor": requestor,
@@ -91,46 +120,33 @@ def expense_form():
                     st.session_state.api_key = api_key
                     st.session_state.form_data = form_data
                     
-                    st.session_state.page = "org_structure"
+                    st.session_state.page = "result"
+                    
             
 
 
-def document_upload():
-    st.title("Upload a Document or Submit Additional Text")
-
-    with st.form("upload_form"):
-        file = st.file_uploader("Choose a file")
-        additional_text = st.text_area("Or submit additional text")
-        submitted = st.form_submit_button("Submit")
-        
-        if submitted:
-            code,explaination = process_data(st.session_state.form_data, file, additional_text,st.session_state.form_data2)
-            st.write(str(code))
-            st.write(explaination)
-            print(code)
-            display_mermaid_diagram(code)
-            st.session_state.page = "form"
-            st.session_state.form_data = None
-            st.session_state.form_data2 = None
-            st.session_state.api_key = None
-            expense_form()
+# def document_upload():
+#             st.title("Result")
+#             code,explaination = process_data(st.session_state.form_data)
+#             st.write(str(code))
+#             st.write(explaination)
+#             # print(code)
+#             display_mermaid_diagram(code)
+#             st.session_state.page = "form"
+#             st.session_state.form_data = None
+#             st.session_state.form_data2 = None
+#             st.session_state.api_key = None
+            
+    
+            
 
 def display_mermaid_diagram(code):
-    # Example Mermaid diagram
+    code = code.replace("\\n", "\n").replace("\\", "").replace(";", "").replace("mermaid", "").replace("```", "")
     
-    code = code.replace("\\n", "\n")
-    code = code.replace("\\", "")
-    code = code.replace(";", "")
-    code= code.replace("mermaid", "")
-    code= code.replace("```", "")
-      
-    
-    diagram = code
-    diagram = code
     # HTML and JS to render the Mermaid diagram
     mermaid_html = f"""
-        <div class="mermaid">
-            {diagram}
+        <div class="mermaid" style="max-width: 100%; max-height: 800px; overflow: auto;">
+            {code}
         </div>
         <script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.5/dist/mermaid.min.js"></script>
         <script>
@@ -146,18 +162,7 @@ def display_mermaid_diagram(code):
     """
     html(mermaid_html,width=1000,height=1000)
 
-def org_structure():
-    st.title("Org Structure")
-    with st.form("org_structure"):
-        file2= st.file_uploader("Choose a file")
-        
-        submitted = st.form_submit_button("Submit")
-        if submitted:
-            form_data2 = {
-                "file": extractText(file2)
-            }
-            st.session_state.form_data2 = form_data2
-            st.session_state.page = "upload"
+
         
 
 
@@ -194,13 +199,22 @@ def extractText(file):
         print("Unsupported file type:", file_type)
     return temp_text
 
+def extract_text_from_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            text = file.read()
+        return text
+    except FileNotFoundError:
+        return "The file was not found."
+    except Exception as e:
+        return f"An error occurred: {e}"
 
 if "page" not in st.session_state:
     st.session_state.page = "form"
 
-if st.session_state.page == "form":
-    expense_form()
-elif st.session_state.page == "upload":
-    document_upload()
-elif st.session_state.page == "org_structure":
-    org_structure()
+def reset_state():
+    st.session_state.page = "form"
+    st.session_state.form_data = None
+    st.session_state.api_key = None
+
+main()
